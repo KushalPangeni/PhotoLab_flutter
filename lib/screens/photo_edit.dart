@@ -123,9 +123,8 @@ class _PhotoEditorState extends State<PhotoEditor> {
                 : Center(
                     child: Column(
                       children: [
-                        // SizedBox(height: MediaQuery.sizeOf(context).height / 2 - 80),
-                        IconButton(
-                          onPressed: () async {
+                        InkWell(
+                          onTap: () async {
                             log('Select Image clicked');
                             final pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
                             if (pickedImage != null) {
@@ -136,7 +135,10 @@ class _PhotoEditorState extends State<PhotoEditor> {
                               });
                             }
                           },
-                          icon: const Icon(Icons.add_a_photo, size: 80),
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(Icons.add_a_photo, size: 80),
+                          ),
                         ),
                       ],
                     ),

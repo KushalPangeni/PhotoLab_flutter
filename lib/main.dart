@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/providers/color_filter_provider.dart';
 import 'package:flutter_application_1/providers/opacity_provider.dart';
 import 'package:flutter_application_1/providers/text_provider.dart';
-import 'package:flutter_application_1/screens/firstpage.dart';
+import 'package:flutter_application_1/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const FirstPage(),
+        home: const SplashScreen(),
       ),
     );
   }

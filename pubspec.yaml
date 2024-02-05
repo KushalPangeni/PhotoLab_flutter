@@ -45,6 +45,8 @@ dependencies:
   permission_handler: ^11.1.0
   gallery_saver: ^2.3.2
   page_transition: ^2.1.0
+  percent_indicator: ^4.2.3
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
