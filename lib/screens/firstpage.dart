@@ -15,7 +15,7 @@ class FirstPage extends StatefulWidget {
   State<FirstPage> createState() => _FirstPageState();
 }
 
-String name = "Kushal";
+String name = "Your name";
 
 class _FirstPageState extends State<FirstPage> {
   TextEditingController nameController = TextEditingController();
