@@ -38,13 +38,14 @@ class _PhotoEditorState extends State<PhotoEditor> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        // backgroundColor: Colors.orange.shade100,
         // appBar: AppBar(
         //   title: const Text("Photo Editor"),
         // ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // const SizedBox(height: 50),
+            const SizedBox(height: 5),
             //Image here
             _image != null
                 ? Screenshot(
@@ -93,32 +94,35 @@ class _PhotoEditorState extends State<PhotoEditor> {
 
             //Change Image button here
             _image != null
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () async {
-                          log('Select Image clicked');
-                          final pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
-                          if (pickedImage != null) {
-                            log(pickedImage.path.toString());
-                            final image = await XFile(pickedImage.path).readAsBytes();
-                            setState(() {
-                              _image = image;
-                            });
-                          }
-                        },
-                        child: const Text("Change Image"),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          final image = await screenshotController.capture();
-                          if (_image == null) return;
-                          await saveImagee(image);
-                        },
-                        child: const Text("Save Image"),
-                      ),
-                    ],
+                ? Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 2, 0, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () async {
+                            log('Select Image clicked');
+                            final pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
+                            if (pickedImage != null) {
+                              log(pickedImage.path.toString());
+                              final image = await XFile(pickedImage.path).readAsBytes();
+                              setState(() {
+                                _image = image;
+                              });
+                            }
+                          },
+                          child: const Text("Change Image"),
+                        ),
+                        ElevatedButton(
+                          onPressed: () async {
+                            final image = await screenshotController.capture();
+                            if (_image == null) return;
+                            await saveImagee(image);
+                          },
+                          child: const Text("Save Image"),
+                        ),
+                      ],
+                    ),
                   )
                 : Center(
                     child: Column(

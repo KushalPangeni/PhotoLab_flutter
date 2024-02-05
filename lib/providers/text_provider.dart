@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TextProvider extends ChangeNotifier {
   Color _color = Colors.yellow;
   BlendMode _blendMode = BlendMode.color;
-  String _text = '';
+  String _text = 'Kushal';
 
   Color get color => _color;
 
@@ -21,7 +22,9 @@ class TextProvider extends ChangeNotifier {
 
   String get text => _text;
 
-  void setText(String texty) {
+  void setText(String texty) async {
     _text = texty;
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("Name", texty);
   }
 }
