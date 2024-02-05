@@ -29,65 +29,25 @@ class _FirstPageState extends State<FirstPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Photo Lab",
-                style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white, fontSize: 26),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(8.0, 8, 8, 0),
+                child: Text(
+                  "Photo Lab",
+                  style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white, fontSize: 26),
+                ),
               ),
               const SizedBox(height: 15),
-              const Text(
+              Text(
                 "Hi There,",
-                style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white, fontSize: 30),
+                style: TextStyle(fontWeight: FontWeight.w500, color: Colors.orange[100], fontSize: 30),
               ),
               InkWell(
                 onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return Stack(
-                        children: [
-                          AlertDialog(
-                            backgroundColor: Colors.transparent,
-                            title: Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
-                              // height: 150,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    'Change your name',
-                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                                  ),
-                                  const Divider(),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TextField(
-                                      maxLength: 15,
-                                      controller: nameController,
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: ElevatedButton(
-                                      onPressed: () async {
-                                        changeName();
-                                      },
-                                      child: const Text("Okay"),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            elevation: 10,
-                          ),
-                        ],
-                      );
-                    },
-                  );
+                  openDialogBox();
                 },
                 child: Text(
                   name,
-                  style: const TextStyle(fontWeight: FontWeight.w500, color: Colors.white, fontSize: 26),
+                  style: TextStyle(fontWeight: FontWeight.w500, color: Colors.orange[100], fontSize: 26),
                 ),
               ),
               const SizedBox(height: 20),
@@ -112,8 +72,10 @@ class _FirstPageState extends State<FirstPage> {
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                           color: Colors.orange,
-                          gradient: const LinearGradient(
-                              begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Colors.white, Colors.red]),
+                          gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [Colors.orange.shade50, Colors.orange.shade50]),
                           borderRadius: BorderRadius.circular(8)),
                       child: const Column(
                         children: [
@@ -168,6 +130,53 @@ class _FirstPageState extends State<FirstPage> {
       name = pref.getString("Name") ?? name;
       log(name);
     });
+  }
+
+  void openDialogBox() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Stack(
+          children: [
+            AlertDialog(
+              backgroundColor: Colors.transparent,
+              title: Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
+                // height: 150,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Change your name',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    const Divider(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        maxLength: 15,
+                        controller: nameController,
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          changeName();
+                        },
+                        child: const Text("Okay"),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              elevation: 10,
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override

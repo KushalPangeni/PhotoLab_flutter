@@ -3,7 +3,6 @@ import 'package:flutter_application_1/providers/opacity_provider.dart';
 import 'package:provider/provider.dart';
 
 Widget opacityIcon(BuildContext context, IconData icon) {
-  // var provider = Provider.of<OpacityProvider>(context, listen: false);
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: ListView(
@@ -15,7 +14,6 @@ Widget opacityIcon(BuildContext context, IconData icon) {
             showModalBottomSheet(
               context: context,
               builder: (BuildContext context) {
-                // Set the desired height here (50 in this case)
                 double desiredHeight = 115;
 
                 return SizedBox(

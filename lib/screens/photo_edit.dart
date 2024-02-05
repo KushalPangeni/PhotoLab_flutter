@@ -38,10 +38,6 @@ class _PhotoEditorState extends State<PhotoEditor> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: Colors.orange.shade100,
-        // appBar: AppBar(
-        //   title: const Text("Photo Editor"),
-        // ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -195,12 +191,10 @@ class _PhotoEditorState extends State<PhotoEditor> {
   }
 
   Future<String> saveImagee(Uint8List? image) async {
-    // await [Permission.storage].request();
     PermissionStatus status = await Permission.storage.request();
 
     final time = DateTime.now().toIso8601String().replaceAll('.', '-').replaceAll(':', '-');
     final name = 'screenshot_$time';
-    // PermissionStatus status = await Permission.storage.status;
     if (status.isGranted) {
       final result = await ImageGallerySaver.saveImage(image!, name: name);
       return result['filePath'];
@@ -211,8 +205,5 @@ class _PhotoEditorState extends State<PhotoEditor> {
     } else {
       return "";
     }
-
-    // final result = await ImageGallerySaver.saveImage(image!, name: name);
-    // return result['filePath'];
   }
 }
